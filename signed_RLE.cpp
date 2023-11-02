@@ -159,7 +159,7 @@ std::vector<int8_t> compress(const std::vector<int8_t> & raw)
     {
         if(s.count > 0)
         {
-            if(s.count >= std::numeric_limits<int8_t>::max())
+            if(s.count > std::numeric_limits<int8_t>::max())
             {
                 out.push_back(0);
                 push_end_chars<int32_t>(&out, s.count);
@@ -170,7 +170,7 @@ std::vector<int8_t> compress(const std::vector<int8_t> & raw)
         }
         else
         {
-            if(s.count <= std::numeric_limits<int8_t>::min())
+            if(s.count < std::numeric_limits<int8_t>::min())
             {
                 out.push_back(0);
                 push_end_chars<int32_t>(&out, s.count);
